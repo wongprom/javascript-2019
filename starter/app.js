@@ -8,14 +8,24 @@ var budgetController = (function () {
 //UICONTROLLER
 var UIController = (function () {
 
-  //some code
+  return {
+    getInput: function () {
+      return {
+        type: document.querySelector('.add__type').value, // Will be either inc or exp
+        description: document.querySelector('.add__description').value,
+        value: document.querySelector('.add__value').value,
+      };
+    }
+  }
+
 
 })();
 //GLOBAL APP CONTROLLER
 var controller = (function (bugetCtrl, UICtrl) {
   var ctrlAddItem = function () {
     //1 get the field input data
-
+    var input = UICtrl.getInput();
+    console.log("OUTPUT: ctrlAddItem -> input", input)
     //2 add the item to the budget controller
 
     //3 add the item to the UI controller
@@ -23,7 +33,7 @@ var controller = (function (bugetCtrl, UICtrl) {
     //4 calculate the budget
 
     //5 display the budget on the UI
-    console.log('rgrgergergerg');
+
   }
 
   document.querySelector('.add__btn').addEventListener('click', ctrlAddItem)
