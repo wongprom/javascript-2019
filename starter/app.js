@@ -14,6 +14,14 @@ var UIController = (function () {
 //GLOBAL APP CONTROLLER
 var controller = (function (bugetCtrl, UICtrl) {
   document.querySelector('.add__btn').addEventListener('click', function () {
-    console.log('Button was clicked');
+    //1 get the field input data
+
+    //2 add the item to the budget controller
+
+    //3 add the item to the UI controller
+
+    //4 calculate the budget
+
+    //5 display the budget on the UI
   })
 })(budgetController, UIController);
