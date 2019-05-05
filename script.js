@@ -373,37 +373,51 @@ console.log(limitSweden);
 //   freeTime: 'run'
 // }
 
-var Question = function (question, answer, checkAnswer) {
-  (this.question = question), (this.answer = answer), (this, checkAnswer = checkAnswer)
-}
-
-var question1 = new Question('Do you like Volvo?', ['yes', 'no'], 0)
-
-
-
+(function () {
+  function Question(question, answers, correct) {
+    this.question = question;
+    this.answers = answers;
+    this.correct = correct;
+  }
 
 
-var Person = function (name, yearOfBirth, job) {
-  (this.name = name), (this.yearOfBirth = yearOfBirth), (this.job = job);
-};
+  Question.prototype.displayQuestion = function () {
+    console.log(this.question);
+    for (var i = 0; i < this.answers.length; i++) {
+      console.log(i + ': ' + this.answers[i]);
+    }
+  }
 
-Person.prototype.calcAge = function () {
-  console.log(2019 - this.yearOfBirth);
-};
+  Question.prototype.checkAnswer = function (ans) {
+
+    if (ans === this.correct) {
+      console.log('correct answer')
+    } else {
+      console.log('WRONG answer')
+    }
+
+  }
+
+  var question1 = new Question('Would you like to have a Nissan Skyline', ['yes', 'no'], 0)
+
+  var question2 = new Question('Are you an awsome js developer?', ['yes', 'no'], 0)
+
+  var question3 = new Question('Who is the best youngest person on our family?', ['Jimmy', 'Vanessa', 'Sean', 'Melody'], 3)
+
+
+  var questions = [question1, question2, question3];
+
+  var n = Math.floor(Math.random() * questions.length);
+
+  questions[n].displayQuestion();
+
+
+  var answer = parseInt(prompt('What is yor answer?'))
+  console.log("OUTPUT: answer : ", answer)
+
+  questions[n].checkAnswer(answer);
+})();
 
 
 
-var jimmy = new Person('Jimmy', 1981, 'Intern');
-console.log('TCL: jimmy', jimmy);
-Person.prototype.lastName = 'Backstrom';
-console.log(jimmy.lastName);
 
-
-
-var vanessa = new Person('Vanessa', 1979, 'Developer');
-var sean = new Person('Sean', 2009);
-var melody = new Person('Melody', 2011, 'Crafting things');
-
-
-
-console.log(sean.lastName); 
